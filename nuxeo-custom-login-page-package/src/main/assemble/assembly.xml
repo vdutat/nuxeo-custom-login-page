@@ -7,10 +7,6 @@
     <property name="outdir" value="${maven.project.build.directory}" />
     <!-- Include your artifacts in the graph adding your groupId to groupPrefixes -->
     <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo,com.acme" />
-<!--
-    <artifact:print output="${outdir}/nuxeo-custom-login-page-artifacts.properties" mode="sdk" />
-    <artifact:print output="${outdir}/nuxeo-custom-login-page-test-artifacts.properties" mode="sdk" scopes="test" />
--->
     <!-- Prints the graph for debugging purpose -->
     <artifact:print output="${outdir}/dependency-tree.log" />
     <tstamp />
@@ -28,10 +24,6 @@
         <filter token="STUDIO_PROJECT_VERSION" value="${studio.project.version}" />
       </filterset>
     </copy>
-<!--
-    <copy file="${outdir}/nuxeo-custom-login-page-artifacts.properties" todir="${outdir}/marketplace/install" />
-    <copy file="${outdir}/nuxeo-custom-login-page-test-artifacts.properties" todir="${outdir}/marketplace/install" />
--->
 
     <!-- Base distribution NXR -->
     <copy todir="${outdir}">
@@ -113,16 +105,6 @@
       </then>
     </if>
 
-<!--
-    <var
-      name="install.properties"
-      value="${line.separator}
-  &lt;copy file=&quot;${package.root}/install/nuxeo-custom-login-page-artifacts.properties&quot;${line.separator}
-    todir=&quot;${env.server.home}/sdk&quot; overwrite=&quot;true&quot; /&gt;${line.separator}
-  &lt;copy file=&quot;${package.root}/install/nuxeo-custom-login-page-test-artifacts.properties&quot;${line.separator}
-    todir=&quot;${env.server.home}/sdk&quot; overwrite=&quot;true&quot; /&gt;" />
--->
-
     <var name="install.templates" value="" />
     <if>
       <available file="${outdir}/marketplace/install/templates" />
@@ -139,9 +121,6 @@
       <filterset>
         <filter token="BUNDLES" value="${install.bundles}" />
         <filter token="LIBS" value="${install.libs}" />
-<!--
-        <filter token="PROPERTIES" value="${install.properties}" />
--->
         <filter token="TEMPLATES" value="${install.templates}" />
       </filterset>
     </copy>
