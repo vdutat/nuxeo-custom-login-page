@@ -9,7 +9,7 @@
 
   <groupId>com.acme</groupId>
   <artifactId>nuxeo-custom-login-page-parent</artifactId>
-  <version>1.0</version>
+  <version>1.2</version>
   <name>Nuxeo custom login page parent</name>
   <description />
   <packaging>pom</packaging>
