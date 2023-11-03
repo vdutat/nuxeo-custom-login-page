@@ -10,7 +10,8 @@ mkdir nuxeo-custom-login-page && cd $_
 nuxeo bootstrap multi-module seam
 mkdir -p nuxeo-custom-login-page-jsf/src/main/resources/web/nuxeo.war && cd $_
 wget https://github.com/nuxeo/nuxeo/raw/2023/modules/platform/nuxeo-platform-web-common/src/main/resources/web/nuxeo.war/login.jsp
-# MOODIFY login.jsp (add '<require>org.nuxeo.ecm.platform.web.common</require>` inside `fragment` tag)
+# MODIFY login.jsp
+# MODIFY deployment-fragment.xml (add '<require>org.nuxeo.ecm.platform.web.common</require>` inside `fragment` tag)
 cd -
 nuxeo bootstrap package
 nuxeo bootstrap docker
