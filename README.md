@@ -13,6 +13,8 @@ wget https://github.com/nuxeo/nuxeo/raw/2023/modules/platform/nuxeo-platform-web
 # MOODIFY login.jsp (add '<require>org.nuxeo.ecm.platform.web.common</require>` inside `fragment` tag)
 cd -
 nuxeo bootstrap package
+nuxeo bootstrap docker
+nuxeo bootstrap docker-compose
 ```
 
 ## Requirements
@@ -21,6 +23,8 @@ Building requires the following software:
 
 * git
 * maven
+* docker (only for **Option 1** below)
+* docker-compose (only for **Option 1** below)
 
 ## Build
 
@@ -31,7 +35,20 @@ cd nuxeo-custom-login-page
 mvn clean install
 ```
 
+if you don't want to build the **Docker** image, use:
+```
+mvn clean install -DskipDocker
+```
+
 ## Installation
+
+### Option 1 (using the Docker image)
+
+```
+docker-compose up -d ; docker-compose logs -f ; docker-compose down -v
+```
+
+### Option 2
 
 ```
 nuxeoctl mp-install nuxeo-custom-login-page/nuxeo-custom-login-page-package/target/nuxeo-custom-login-page-package-*.zip
