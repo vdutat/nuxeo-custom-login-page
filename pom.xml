@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.nuxeo</groupId>
     <artifactId>nuxeo-parent</artifactId>
-    <version>2023.0</version>
+    <version>2023.3</version>
   </parent>
 
   <groupId>com.acme</groupId>
@@ -18,11 +18,13 @@
     <!-- Skip Nuxeo enforcer rules by default -->
     <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
     <nuxeo.target.version>2023.0</nuxeo.target.version>
+    <skipDocker>false</skipDocker>
   </properties>
 
   <modules>
     <module>nuxeo-custom-login-page-jsf</module>
     <module>nuxeo-custom-login-page-package</module>
+    <module>nuxeo-custom-login-page-docker</module>
   </modules>
 
   <scm />
@@ -43,6 +45,11 @@
       <dependency>
         <groupId>com.acme</groupId>
         <artifactId>nuxeo-custom-login-page-package</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.acme</groupId>
+        <artifactId>nuxeo-custom-login-page-docker</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -96,4 +103,15 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.spotify</groupId>
+          <artifactId>dockerfile-maven-plugin</artifactId>
+          <version>1.4.13</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

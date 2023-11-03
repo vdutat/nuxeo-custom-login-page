@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  nuxeo:
+    image: nuxeo-custom-login-page:1.2
+    ports:
+      - "8080:8080"
+      - "8787:8787"
+    environment:
+      NUXEO_DEV: "true"
+      NUXEO_PACKAGES: nuxeo-web-ui
+      NUXEO_CLID: "efc0d004-b309-4119-97ce-b93d3a115e25.1693789648.Omy3SwM5I67OPZUcP7nOSlbePfYjx0ufzT7ShCxg+zVbGV9fT//EWO1cJTdYIcZEs2Ts8ecnR+XdGrIZa2PLQPe7AMGJRsQPaQFYhRdtzmp65Uog8l1SvWQF8tkFyO2h7hUP1RH9X7TrnYI7hq725NQZz7z8WMVV8w0tqU1TlhZfAuMRKKmBM2U6B3GOJoPutmNoGb8ThxCCMOR1EPIC2M291O+QrGuXZfWYXXRPpCkJpPQhhRIpK2ENiO7jeum3vOF8Aalp0/6LBP3yx1+hySOefWrOnLTzEjVaLT3E84YKoPeFVK6RV9gBv8KG4T+BN4LSp73hN4lmCBji/pQlsw==--b24b1c67-528e-4658-962c-d515e58a21aa"
+    volumes:
+      - ./conf.d:/etc/nuxeo/conf.d
+      - data:/var/lib/nuxeo
+      - log:/var/log/nuxeo
+volumes:
+  data: {}
+  log: {}
